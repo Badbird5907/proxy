@@ -1,6 +1,6 @@
 import Cookie from 'cookie';
 import { getRewriteScript, getServiceWorkerScript } from './rwscript';
-const defaultRewriteRules = ["html", "plain", "strings", "cors"]
+const defaultRewriteRules = ["html", "plain", "cors"]
 
 export type Enviornment = {
 	PASSWORD?: string;

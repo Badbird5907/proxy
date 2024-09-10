@@ -14,7 +14,7 @@ The available rewrite rules are:
 - html: rewrites html
 - plain: rewrites plain text (Content-Type: text/plain)
 - cors: rewrites CORS headers
-- scripts: rewrites script tags
+- scripts: rewrites script tags [EXPERIMENTAL]
 
 The default rewrite rules are:
 html, plain, cors

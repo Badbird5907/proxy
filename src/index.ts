@@ -11,7 +11,12 @@ export default {
 		// auth via X-Proxy-Password, Basic, or ?password=
 		const hasPassword = !!env.PASSWORD;
 		if (hasPassword && !(request.headers.get('X-Proxy-Password') === env.PASSWORD || request.headers.get('Authorization') === `Basic ${btoa(`:${env.PASSWORD}`)}` || new URL(request.url).searchParams.get('password') === env.PASSWORD)) {
-			return new Response('Not Authorized');
+			return new Response('Not Authorized', {
+				status: 401,
+				headers: {
+					'WWW-Authenticate': 'Basic realm="Secure Area"',
+				},
+			});
 		}
 		const url = new URL(request.url);
 		if (url.pathname === "/test") {

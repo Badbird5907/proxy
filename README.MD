@@ -3,6 +3,7 @@
 (IN DEVELOPMENT)
 
 This is a cloudflare worker that can be used to proxy a site, that also rewrites urls/CORS headers.
+Please note that client side javascript routing may not work properly (for example, traversing github files).
 
 ## Usage
 

@@ -61,7 +61,7 @@ export default {
 				},
 			});
 		}
-		
+
 		const enforceHttps = false;
 		// /?url=https://example.com
 		const targetUrlStr = decodeURIComponent(url.searchParams.get('url') ?? "");
@@ -89,10 +89,16 @@ export default {
 		headers.set('Referer', targetUrl.origin);
 
 		// strip all proxy headers
-		const proxyHeaders = ['X-Forwarded-For', 'X-Forwarded-Host', 'X-Forwarded-Proto', 'X-Forwarded-Port', 'X-Forwarded-Server', 'cf-ray', 'CF-Connecting-IP', 'CF-Connecting-IPv6', "X-Frame-Options"]
+		const proxyHeaders = ['X-Forwarded-For', 'X-Forwarded-Host', 'X-Forwarded-Proto', 'X-Forwarded-Port', 'X-Forwarded-Server', 'cf-ray', 'CF-Connecting-IP', 'CF-Connecting-IPv6']
 		for (const header of proxyHeaders) {
 			headers.delete(header);
 		}
+
+		if (rewriteRules.includes("allow-frame")) {
+			// headers.set('X-Frame-Options', 'ALLOW-FROM *');
+			headers.delete("X-Frame-Options");
+		}
+
 		const newReq = new Request(targetUrl, {
 			method: request.method,
 			headers: headers,

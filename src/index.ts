@@ -61,6 +61,7 @@ export default {
 				},
 			});
 		}
+		
 		const enforceHttps = false;
 		// /?url=https://example.com
 		const targetUrlStr = decodeURIComponent(url.searchParams.get('url') ?? "");

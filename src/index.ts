@@ -240,6 +240,9 @@ const buildRewriteRules = (url: URL) => {
 		if (url.searchParams.has('rewrite-js')) {
 			rewriteRules.push('scripts');
 		}
+		if (url.searchParams.has('allow-frame')) {
+			rewriteRules.push('allow-frame');
+		}
 		return rewriteRules;
 	}
 

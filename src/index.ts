@@ -94,11 +94,6 @@ export default {
 			headers.delete(header);
 		}
 
-		if (rewriteRules.includes("allow-frame")) {
-			// headers.set('X-Frame-Options', 'ALLOW-FROM *');
-			headers.delete("X-Frame-Options");
-		}
-
 		const newReq = new Request(targetUrl, {
 			method: request.method,
 			headers: headers,
@@ -124,6 +119,11 @@ export default {
 				const key = aclAllow + header;
 				newHeaders.set(key, "*");
 			});
+		}
+
+		if (rewriteRules.includes("allow-frame")) {
+			// newHeaders.set('X-Frame-Options', 'ALLOW-FROM *');
+			newHeaders.delete("X-Frame-Options");
 		}
 
 		// rewrite cookies

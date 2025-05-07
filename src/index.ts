@@ -88,7 +88,7 @@ export default {
 		headers.set('Referer', targetUrl.origin);
 
 		// strip all proxy headers
-		const proxyHeaders = ['X-Forwarded-For', 'X-Forwarded-Host', 'X-Forwarded-Proto', 'X-Forwarded-Port', 'X-Forwarded-Server', 'cf-ray', 'CF-Connecting-IP', 'CF-Connecting-IPv6']
+		const proxyHeaders = ['X-Forwarded-For', 'X-Forwarded-Host', 'X-Forwarded-Proto', 'X-Forwarded-Port', 'X-Forwarded-Server', 'cf-ray', 'CF-Connecting-IP', 'CF-Connecting-IPv6', "X-Frame-Options"]
 		for (const header of proxyHeaders) {
 			headers.delete(header);
 		}
